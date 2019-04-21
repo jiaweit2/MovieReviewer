@@ -2,11 +2,13 @@ var key = 'dd2663f90eea8915b4119abab4159ba6';
 var curr_request=null;
 var base_url;
 function init(){
-	var totalCount = 3;
+	var totalCount = 7;
     var num = Math.ceil(Math.random() * totalCount);
     document.getElementById("whole").style.background="url('images/bg"+num+".jpg')";
     document.getElementById("whole").style.backgroundSize = ""+$(window).width()+"px auto";
     document.getElementById("whole").style.backgroundRepeat="no-repeat";
+    document.getElementById("whole").style.backgroundPosition="center top";
+    document.getElementById("whole").style.transition="background 1s";
 	$.ajax({
 		url:'https://api.themoviedb.org/3/configuration',
 		data:{'api_key':key},
@@ -21,7 +23,15 @@ function init(){
 			console.log("retrieving base_url failed!")
 		}
 	});
-
+	setInterval(function(){
+		let t = Math.ceil(Math.random() * (totalCount-1));
+		num = (num+t)%totalCount;
+	    document.getElementById("whole").style.background="url('images/bg"+num+".jpg')";
+        document.getElementById("whole").style.backgroundSize = ""+$(window).width()+"px auto";
+	    document.getElementById("whole").style.backgroundRepeat="no-repeat";
+	    document.getElementById("whole").style.backgroundPosition="center top";
+	    document.getElementById("whole").style.transition="background 1s";
+	},10000);
 }
 
 function updateQuery(){
