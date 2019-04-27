@@ -12,7 +12,7 @@ function init(){
     document.getElementById("whole").style.transition="background-image 1s ease-in-out";
     //preloading
     var img = new Image;
-    img.src = 'images/bg'+(num+1)%totalCount+'.jpg';
+    img.src = 'images/bg'+(num+1)%(totalCount+1)+'.jpg';
 
 	$.ajax({
 		url:'https://api.themoviedb.org/3/configuration',
@@ -38,7 +38,7 @@ function init(){
 	    if(need_preload<=totalCount){
 		    //preloading
 		    img = new Image;
-		    img.src = 'images/bg'+(num+1)%totalCount+'.jpg';
+		    img.src = 'images/bg'+(num+1)%(totalCount+1)+'.jpg';
 		    need_preload++;
 	    }
 	},10000);
