@@ -3,13 +3,13 @@ var curr_request=null;
 var need_preload = 1;
 var base_url;
 function init(){
-	var totalCount = 7;
+	var totalCount = 9;
     var num = Math.ceil(Math.random() * totalCount);
     document.getElementById("whole").style.backgroundImage="url('images/bg"+num+".jpg')";
-    document.getElementById("whole").style.backgroundSize = ""+$(window).width()+"px auto";
+    document.getElementById("whole").style.backgroundSize = "cover";
     document.getElementById("whole").style.backgroundRepeat="no-repeat";
     document.getElementById("whole").style.backgroundPosition="center top";
-    document.getElementById("whole").style.transition="background 1s";
+    document.getElementById("whole").style.transition="background-image 1s ease-in-out";
     //preloading
     var img = new Image;
     img.src = 'images/bg'+(num+1)%totalCount+'.jpg';
@@ -29,12 +29,12 @@ function init(){
 		}
 	});
 	setInterval(function(){
-		num = (num+1)%totalCount;
+		num = (num+1)%(totalCount+1);
 	    document.getElementById("whole").style.backgroundImage="url('images/bg"+num+".jpg')";
-        document.getElementById("whole").style.backgroundSize = ""+$(window).width()+"px auto";
+        document.getElementById("whole").style.backgroundSize = "cover";
 	    document.getElementById("whole").style.backgroundRepeat="no-repeat";
 	    document.getElementById("whole").style.backgroundPosition="center top";
-	    document.getElementById("whole").style.transition="background 1s";
+	    document.getElementById("whole").style.transition="background-image 1s ease-in-out";
 	    if(need_preload<=totalCount){
 		    //preloading
 		    img = new Image;

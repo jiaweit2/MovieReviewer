@@ -890,6 +890,7 @@ legend {
   height: 70px;
   width: 100%;
   position: relative;
+  opacity: 0.9;
 }
 
 .s006 form .inner-form .input-field input {
