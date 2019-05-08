@@ -57,6 +57,8 @@ html {
  */
 body {
   margin: 0;
+  text-align: center;
+  /*pointer-events: none;*/
 }
 
 /**
@@ -994,3 +996,32 @@ legend {
   }
 }
 
+.reviewbox{
+    background-color: rgba(255,106,68,0.8);
+    border-radius: 15px;
+    padding: 5px;
+    margin: 30px 0;
+    width: 60%;
+    cursor: pointer;
+}
+.reviewbox:hover{
+    background-color: rgba(255,106,68,1);
+}
+
+.darkrb{
+    /*background-color: rgba(131,240,47,0.8);*/
+    background-color: rgba(0,0,0,0.3);
+}
+.darkrb:hover{
+    /*background-color: rgba(131,240,47,1);*/
+    background-color: rgba(0,0,0,0.5);
+}
+#reviews a{
+  text-decoration: none;
+  color:white;
+}
+h1 {
+  font-family: monospace, monospace;
+  width: 50%;
+  color:white;
+}

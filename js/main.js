@@ -2,6 +2,7 @@ var key = 'dd2663f90eea8915b4119abab4159ba6';
 var curr_request=null;
 var need_preload = 1;
 var base_url;
+
 function init(){
 	var totalCount = 9;
     var num = Math.ceil(Math.random() * totalCount);
@@ -54,7 +55,6 @@ function updateQuery(){
 		url:'https://api.themoviedb.org/3/search/movie',
 		data:{'api_key':key,'query':val},
 		success:function(o){
-			console.log(o);
 			var str="";
 			var results = o['results'];
 			var l=results.length;
@@ -69,7 +69,7 @@ function updateQuery(){
 					overview = overview.substr(0,200)+"...";
 				}
 				var pic = base_url+movie['poster_path'];
-				var row = '<div class="row">';
+				var row = '<div class="row" onclick="crawl(\''+movie['title']+'\');">';
 				row+='<img onerror="this.src=\'images/error.jpg\';" src="'+pic+'" />';
 				row+='<div class=details>'
 				row+='<span class=title>'+movie['title']+' ('+year+')'+'</span><br>';
@@ -95,3 +95,34 @@ function clearSuggestions(){
 	var my_list=document.getElementById("suggestions");
 	my_list.innerHTML = "";
 }
+function crawl(title){
+	document.body.style.pointerEvents = "none";		
+	let newTab = window.open("wait.html");
+	$.ajax({
+		url:"http://uiuccssait.web.illinois.edu/movierater/get_rate",
+		type:"POST",
+		data:({
+			name:title
+		}),
+		success:function(o){
+			localStorage.setItem(title, o);
+			var url = 'pullreview.html?t='+title;
+			newTab.location.href = url;
+			document.body.style.pointerEvents = "auto";
+		},
+		fail:function(o){
+			console.log(o);
+			alert("failed, plz try again!");
+			document.body.style.pointerEvents = "auto";
+		},
+		onerror:function(o){
+			alert("Server Error!")
+			document.body.style.pointerEvents = "auto";
+		}
+	});
+}
+
+
+
+
+
