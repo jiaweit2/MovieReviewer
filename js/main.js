@@ -2,6 +2,7 @@ var key = 'dd2663f90eea8915b4119abab4159ba6';
 var curr_request=null;
 var need_preload = 1;
 var base_url;
+var curr_year = new Date().getFullYear()
 
 function init(){
 	var totalCount = 9;
@@ -64,6 +65,9 @@ function updateQuery(){
 			for(var i=0;i<l;i++){
 				var movie = results[i];
 				var year = movie['release_date'].substr(0,4);
+				if(parseInt(year)>curr_year){
+					continue;
+				}
 				var overview = movie['overview'];
 				if(overview.length>200){
 					overview = overview.substr(0,200)+"...";
