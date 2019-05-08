@@ -68,8 +68,9 @@ function updateQuery(){
 				if(overview.length>200){
 					overview = overview.substr(0,200)+"...";
 				}
+				var title = movie['title'].replace('\'','');
 				var pic = base_url+movie['poster_path'];
-				var row = '<div class="row" onclick="crawl(\''+movie['title']+'\');">';
+				var row = '<div class="row" onclick="crawl(\''+title+'\');">';
 				row+='<img onerror="this.src=\'images/error.jpg\';" src="'+pic+'" />';
 				row+='<div class=details>'
 				row+='<span class=title>'+movie['title']+' ('+year+')'+'</span><br>';
@@ -96,7 +97,6 @@ function clearSuggestions(){
 	my_list.innerHTML = "";
 }
 function crawl(title){
-	document.body.style.pointerEvents = "none";		
 	let newTab = window.open("wait.html");
 	$.ajax({
 		url:"http://uiuccssait.web.illinois.edu/movierater/get_rate",
@@ -105,23 +105,30 @@ function crawl(title){
 			name:title
 		}),
 		success:function(o){
+			if(o=="NOTHING"){
+				newTab.close();
+				document.getElementById("open-modal").style.display="initial";
+				document.getElementById("open-modal").style.opacity="1";
+				return;
+			}
 			localStorage.setItem(title, o);
 			var url = 'pullreview.html?t='+title;
 			newTab.location.href = url;
-			document.body.style.pointerEvents = "auto";
 		},
 		fail:function(o){
 			console.log(o);
 			alert("failed, plz try again!");
-			document.body.style.pointerEvents = "auto";
 		},
 		onerror:function(o){
 			alert("Server Error!")
-			document.body.style.pointerEvents = "auto";
 		}
 	});
 }
 
+function closemo(){
+	document.getElementById("open-modal").style.opacity="0";
+	document.getElementById("open-modal").style.display="none";
+}
 
 
 

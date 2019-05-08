@@ -49,8 +49,10 @@ function init(){
       }
   }
   tr.innerHTML = ls;
-  if(parseInt(obj["score"])>70){
+  if(parseInt(obj["score"])>80){
       na.innerHTML = obj['title'] +" <span style=\"color:#FF5260;font-size:50px;\">"+obj["score"]+"%</span>";    
+  }else if(parseInt(obj["score"])>70){
+      na.innerHTML = obj['title'] +" <span style=\"color:#F5A41F;font-size:50px;\">"+obj["score"]+"%</span>"; 
   }else{
       na.innerHTML = obj['title'] +" <span style=\"color:#84F065;font-size:50px;\">"+obj["score"]+"%</span>"; 
   }
