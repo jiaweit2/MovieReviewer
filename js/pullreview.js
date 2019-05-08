@@ -1,5 +1,5 @@
 var need_preload = 1;
-
+var title;
 function init(){
   var totalCount = 9;
   var num = Math.ceil(Math.random() * totalCount);
@@ -29,7 +29,7 @@ function init(){
 
 
   var urlParams = new URLSearchParams(window.location.search);
-  var title = urlParams.get('t');
+  title = urlParams.get('t');
   var obj = localStorage.getItem(title);
   obj = JSON.parse(obj);
   console.log(obj);
@@ -38,6 +38,9 @@ function init(){
 
   var ls = "";
   for (i=0;i<6;i++){
+      if(obj==null||obj['reviews'][i]==null){
+        break;
+      }
       if(obj['reviews'][i]['feedback']=="Good"){
               ls+= '<div class="reviewbox"><a target="_blank" href="'+obj['reviews'][i]['url']+'">' + obj['reviews'][i]['review'] + "</a></div>";
       }else{
@@ -54,8 +57,9 @@ function init(){
 }
 
 
-
-
-
+window.onbeforeunload = function() {
+  localStorage.removeItem(title);
+  return '';
+};
 
 
