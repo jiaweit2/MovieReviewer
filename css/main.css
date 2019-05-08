@@ -1011,6 +1011,7 @@ legend {
 .darkrb{
     /*background-color: rgba(131,240,47,0.8);*/
     background-color: rgba(0,0,0,0.3);
+    color:white;
 }
 .darkrb:hover{
     /*background-color: rgba(131,240,47,1);*/

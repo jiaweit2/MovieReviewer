@@ -1,5 +1,6 @@
 var need_preload = 1;
 var title;
+
 function init(){
   var totalCount = 9;
   var num = Math.ceil(Math.random() * totalCount);
@@ -42,9 +43,9 @@ function init(){
         break;
       }
       if(obj['reviews'][i]['feedback']=="Good"){
-              ls+= '<div class="reviewbox"><a target="_blank" href="'+obj['reviews'][i]['url']+'">' + obj['reviews'][i]['review'] + "</a></div>";
+              ls+= '<div class="reviewbox" onclick="window.open(\''+obj['reviews'][i]['url']+'\',\'_blank\')">' + obj['reviews'][i]['review'] + "</div>";
       }else{
-              ls+= '<div class="reviewbox darkrb"><a target="_blank" href="'+obj['reviews'][i]['url']+'">' + obj['reviews'][i]['review'] + "</a></div>";
+              ls+= '<div class="reviewbox darkrb" onclick="window.open(\''+obj['reviews'][i]['url']+'\',\'_blank\')">' + obj['reviews'][i]['review'] + "</div>";
       }
   }
   tr.innerHTML = ls;
@@ -57,9 +58,9 @@ function init(){
 }
 
 
-window.onbeforeunload = function() {
-  localStorage.removeItem(title);
-  return '';
-};
+// window.onbeforeunload = function() {
+//   localStorage.removeItem(title);
+//   return '';
+// };
 
 
