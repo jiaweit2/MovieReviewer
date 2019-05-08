@@ -62,6 +62,7 @@ function updateQuery(){
 			if(results.length>20){
 				l=20;
 			}
+			console.log(o);
 			for(var i=0;i<l;i++){
 				var movie = results[i];
 				var year = movie['release_date'].substr(0,4);

@@ -60,9 +60,9 @@ function init(){
 }
 
 
-// window.onbeforeunload = function() {
-//   localStorage.removeItem(title);
-//   return '';
-// };
+window.onbeforeunload = function() {
+  localStorage.removeItem(title);
+  return '';
+};
 
 
