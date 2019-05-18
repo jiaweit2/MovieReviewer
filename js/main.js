@@ -101,7 +101,8 @@ function clearSuggestions(){
 	my_list.innerHTML = "";
 }
 function crawl(title){
-	let newTab = window.open("wait.html");
+	// let newTab = window.open("wait.html");
+	//use current page
 	$.ajax({
 		url:"http://uiuccssait.web.illinois.edu/movierater/get_rate",
 		type:"POST",
@@ -116,8 +117,8 @@ function crawl(title){
 				return;
 			}
 			localStorage.setItem(title, o);
-			var url = 'pullreview.html?t='+title;
-			newTab.location.href = url;
+			// var url = 'pullreview.html?t='+title;
+			window.location.href = url;
 		},
 		fail:function(o){
 			console.log(o);
