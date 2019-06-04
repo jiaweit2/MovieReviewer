@@ -6,4 +6,4 @@ Our tool is focusing on collecting reviews of a given movie name from reddit, pr
 Note: Not quite work in Safari on iPhone or iPad. Optimized for Chrome.
 
 ## Details
-We use a binary classifier to decide each review to be good or bad. Then we calculate the total score for a movie by count of good reviews/total count of reviews.
+We use sentiment analysis to decide each review is good or bad or not relative(neutral). Then we calculate the total score for a movie by count of good reviews/total count of reviews.
