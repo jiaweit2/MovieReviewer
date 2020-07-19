@@ -8,9 +8,9 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/get_rate", methods=['POST', 'GET'])
+@app.route("/get_rate", methods=['GET'])
 def get_rate():
-    name = request.form.get('name')
+    name = request.args.get('name')
     if not name:
         return "error input"
     return jsonify(tagDownload(name))
