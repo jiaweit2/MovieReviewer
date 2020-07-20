@@ -4,3 +4,5 @@ Our tool is focusing on collecting reviews of a given movie name from reddit, pr
 
 ## Details
 We use sentiment analysis to decide each review is good or bad or not relative(neutral). Then we calculate the total score for a movie by count of good reviews/total count of reviews.
+
+<img src="./img/1.png" width="120">  <img src="./img/2.png" width="120"> <img src="./img/3.png" width="120">
